@@ -2,7 +2,14 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Link from 'next/link.js';
-import { Button } from '../components/ui/button';
+import { Button } from '@/components/ui/button';
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from '@/components/ui/sidebar';
+import { AppSidebar } from '@/components/ui/app-sidebar';
+import { Separator } from '@radix-ui/react-separator';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -26,21 +33,27 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <header>
-          <div className="flex justify-between p-8 mb-8 bg-gray-100">
-            <h1 className="text-2xl font-bold">
-              <Link href="/">LOGO</Link>
-            </h1>
-            <Button asChild>
-              <Link href="/login">Login</Link>
-            </Button>
-          </div>
-        </header>
-
-        {children}
+      <body>
+        <SidebarProvider>
+          <AppSidebar />
+          <SidebarInset>
+            <header className="flex justify-between h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+              <div className="flex items-center gap-2 px-4">
+                <SidebarTrigger />
+                <Separator orientation="vertical" className="mr-2 h-4" />
+                <h1 className="text-2xl font-bold">
+                  <Link href="/">LOGO</Link>
+                </h1>
+              </div>
+              <Button asChild className="mr-4">
+                <Link href="/login">Login</Link>
+              </Button>
+            </header>
+            <div className="flex">
+              <main>{children}</main>
+            </div>
+          </SidebarInset>
+        </SidebarProvider>
       </body>
     </html>
   );
