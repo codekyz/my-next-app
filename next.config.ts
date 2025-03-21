@@ -1,3 +1,6 @@
+const isProduction = process.env.NODE_ENV === 'production';
+const repoName = 'my-next-app';
+
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
@@ -6,8 +9,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '/my-next-app',
-  assetPrefix: '/my-next-app/',
+  basePath: isProduction ? `/${repoName}` : '',
+  assetPrefix: isProduction ? `/${repoName}` : '',
 };
 
 export default nextConfig;

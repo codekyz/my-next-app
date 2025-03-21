@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "deploy": "npm run build && gh-pages -d out",
+    "deploy": "npm run build && touch out/.nojekyll && gh-pages -d out",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -40,5 +40,5 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   },
-  "homepage": "https://github.com/codekyz/my-next-app/"
+  "homepage": "https://codekyz.github.io/my-next-app/"
 }
