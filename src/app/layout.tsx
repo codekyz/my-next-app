@@ -50,7 +50,7 @@ export default function RootLayout({
               </Button>
             </header>
             <div className="flex p-4">
-              <main>{children}</main>
+              <main className="w-full">{children}</main>
             </div>
           </SidebarInset>
         </SidebarProvider>
