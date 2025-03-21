@@ -49,7 +49,7 @@ export default function RootLayout({
                 <Link href="/login">Login</Link>
               </Button>
             </header>
-            <div className="flex">
+            <div className="flex p-4">
               <main>{children}</main>
             </div>
           </SidebarInset>
