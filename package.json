@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "deploy": "npm run build && gh-pages -d out",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "deploy": "next build && gh-pages -d .next"
+    "lint": "next lint"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.3",
